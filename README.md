@@ -75,7 +75,7 @@ $ docker logs -f <container-id>
     Listening on port 3000
 ```
 
-## Using Docker Compose
+### Using Docker Compose
 Create docker-compose.yml file
 ```
 services:
@@ -126,3 +126,19 @@ $ docker compose down
 # if you want remove volumes together, add --volumes flag:
 $ docker compose down --volumes
 ```
+
+### Caching build
+We need to restructure our Dockerfile to help support the caching of the dependencies.
+
+Change Dockerfile
+```
+FROM node:18-alpine
+WORKDIR /app
++ COPY package.json yarn.lock ./
++ RUN yarn install --production
+COPY . .
+CMD ["node", "src/index.js"]
+```
+Add folder `node_modules` to .dockerignore.
+
+Build image again.
