@@ -2,7 +2,7 @@
 
 A simple application to create Todo List to make _Getting Started tutorial_ of **docker labs**.
 
-Application in NodeJS e MySQL.
+Application in NodeJS and MySQL.
 
 
 ## Create and run containers
